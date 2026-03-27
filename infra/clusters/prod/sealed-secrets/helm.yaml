@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: sealed-secrets
-      version: ">=1.15.0-0"
+      version: "2.18.4"
   interval: 1h0m0s
   releaseName: sealed-secrets-controller
   targetNamespace: flux-system
@@ -28,3 +28,10 @@ spec:
     crds: Create
   upgrade:
     crds: CreateReplace
+  values:
+    serviceAccount:
+      create: true
+      name: sealed-secrets-controller
+    rbac:
+      create: true
+      clusterRoleBinding: false
